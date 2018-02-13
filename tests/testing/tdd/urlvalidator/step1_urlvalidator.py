@@ -1,6 +1,6 @@
 import unittest
 
-from lectures.testing.tdd.step1_urlvalidator import URLValidator as Step1Validator
+from lectures.testing.tdd.urlvalidator.step1_urlvalidator import URLValidator
 
 
 class Step1(unittest.TestCase):
@@ -9,9 +9,11 @@ class Step1(unittest.TestCase):
     Hence the copy paste/growing of the code. However, I want you to be able to see the logical progression and
     if I just showed the final code the process would be lost
     """
+    def setUp(self):
+        self.Step1Validator = URLValidator()
 
     def push_assert(self, url, expected):
-        valid = Step1Validator.validate_url(url)
+        valid = self.Step1Validator.validate_url(url)
         self.assertEqual(valid, expected, "on URL:%s" % url)
 
     def test_url_validator(self):

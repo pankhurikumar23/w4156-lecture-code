@@ -1,4 +1,5 @@
 import unittest
+from lectures.testing.tdd.efficientfrontier.efficient_frontier import FrontierCalculator
 
 
 class TestEffficientFrontier(unittest.TestCase):
@@ -25,7 +26,7 @@ class TestEffficientFrontier(unittest.TestCase):
         4. James - offers 8% return with 4 std dec return
 
     The one that stands out is Bob and Greg. They offer the same return but Bob has higher risk (3 std dev vs 2 std dev)
-    Therefore it makes no sense to invest in Greg. He is not on the "efficient frontier".
+    Therefore it makes no sense to invest in Bob. He is not on the "efficient frontier".
     Alice offers low returns (but also lowest risk). James offers highest returns with highest risk.
 
     The efficient frontier would therefore be Alice, Greg, James
@@ -35,12 +36,18 @@ class TestEffficientFrontier(unittest.TestCase):
 
     It should return a set of 'optimal' set of investments sorted from lowest return to highest return.
     """
+    def setUp(self):
+        self.calculator = FrontierCalculator()
+
+    def push_assert(self, input, expected):
+        output = self.calculator.calculateEfficientFrontier(input)
+        self.assertEqual(output, expected, "on input: %s" %input)
 
     def test_pareto(self):
         """
         Follow TDD to fill this in
         0. Think about behavior and devise test cases
-        (remember we can not test exhausively so think of equivalence partitions)
+        (remember we can not test exhaustively so think of equivalence partitions)
 
         1. Write the test cases
         2. Run the tests (it will fail)
@@ -54,7 +61,12 @@ class TestEffficientFrontier(unittest.TestCase):
 
         Run test coverage. Inspect the coverage and make a decision about whether test suite is 'adequate'
         """
-        pass
+        cases = [([(6, 3), (2, 1), (8, 4)], [(2, 1), (6, 3), (8, 4)]),
+                 ([(6, 3), (7, 3), (8, 4)], [(7, 3), (8, 4)]),
+                 ([(1, 2), (2, 2), (5, 2)], [(5, 2)])]
+
+        for c in cases:
+            self.push_assert(c[0], c[1])
 
 
 if __name__ == '__main__':
