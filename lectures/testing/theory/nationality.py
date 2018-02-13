@@ -1,6 +1,6 @@
-from enum import Enum, auto
+from enum import Enum
 
 
-class Nationality:
-    American = auto()
-    British = auto()
+class Nationality(Enum):
+    American = 1
+    British = 2

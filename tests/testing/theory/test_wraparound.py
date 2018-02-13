@@ -26,7 +26,7 @@ class MyTestCase(unittest.TestCase):
         :return:
         """
 
-        # As personal taste I like the format where you prepare a datastructure with inputs and expected output
+        # As personal taste I like the format where you prepare a data structure with inputs and expected output
         # It makes it very easy to read the test cases.
         cases = [(-1, 1),
                  (0, 1),

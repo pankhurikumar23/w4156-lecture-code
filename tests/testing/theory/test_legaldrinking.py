@@ -16,7 +16,7 @@ class Test100StatementCoverageTwoBugs(unittest.TestCase):
         """
         self.assertTrue(LegalToDrinkCalculatorWithTwoBugs.is_legal(21, Nationality.American))
 
-    @helper.skip_intentionally_failing()
+    # @helper.skip_intentionally_failing()
     def test_should_be_illegal_drinking(self):
         """
         This second test case here exposes there was still a bug. Remember - the single test case above generated 100%
